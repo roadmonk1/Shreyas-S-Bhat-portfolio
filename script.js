@@ -30,7 +30,7 @@ function openProject(key){
  }
  modal.classList.add("open"); document.body.style.overflow="hidden";
 }
-document.querySelectorAll("[data-project]").forEach(c=>c.addEventListener("click",()=>openProject(c.dataset.project)));
+document.querySelectorAll("[data-project]").forEach(c=>c.addEventListener("click",(e)=>{if(c.tagName==="A"&&c.getAttribute("href")&&c.getAttribute("href").startsWith("#")){e.preventDefault();}openProject(c.dataset.project);}));
 document.getElementById("closeModal").onclick=()=>{modal.classList.remove("open");document.body.style.overflow=""};
 modal.addEventListener("click",e=>{if(e.target===modal){modal.classList.remove("open");document.body.style.overflow=""}});
 
